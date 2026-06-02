@@ -2,13 +2,24 @@
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
-const navLinks = document.querySelectorAll(".main-nav a, .btn[href^='#'], .site-footer a[href^='#'], .float-cta");
+const navLinks = document.querySelectorAll(".main-nav a[href^='#']:not([data-contact-trigger]), .btn[href^='#']:not([data-contact-trigger]), .site-footer a[href^='#']");
 const year = document.querySelector("[data-year]");
 const floatCta = document.querySelector("[data-float-cta]");
+const contactTriggers = document.querySelectorAll("[data-contact-trigger]");
+const contactPanel = document.querySelector("[data-contact-panel]");
+const contactDialog = contactPanel?.querySelector(".contact-choice__dialog");
+const contactCloseButtons = document.querySelectorAll("[data-contact-close]");
+const whatsappOption = document.querySelector("[data-contact-whatsapp]");
+const emailOption = document.querySelector("[data-contact-email]");
 const sparkLayer = document.querySelector("[data-sparks]");
 const tiltCard = document.querySelector("[data-tilt]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const mobileViewport = window.matchMedia("(max-width: 780px)");
+const whatsappNumber = "5531999544453";
+const contactEmail = "contato@agstecnologia.com";
+const whatsappMessage = "Ola! Gostaria de solicitar um orcamento para criacao de site.";
+const whatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+const emailHref = `mailto:${contactEmail}?subject=${encodeURIComponent("Orcamento de site")}&body=${encodeURIComponent(whatsappMessage)}`;
 
 const closeMenu = () => {
   if (!nav || !menuToggle) return;
@@ -31,6 +42,56 @@ if (menuToggle && nav) {
   });
 }
 
+if (whatsappOption) {
+  whatsappOption.href = whatsappHref;
+}
+
+if (emailOption) {
+  emailOption.href = emailHref;
+}
+
+let lastContactTrigger = null;
+
+const openContactPanel = (trigger) => {
+  if (!contactPanel) {
+    window.location.href = whatsappHref;
+    return;
+  }
+
+  lastContactTrigger = trigger || document.activeElement;
+  closeMenu();
+  document.body.classList.add("contact-open");
+  contactPanel.classList.add("is-open");
+  contactPanel.setAttribute("aria-hidden", "false");
+
+  requestAnimationFrame(() => {
+    contactDialog?.focus();
+  });
+};
+
+const closeContactPanel = () => {
+  if (!contactPanel || !contactPanel.classList.contains("is-open")) return;
+
+  document.body.classList.remove("contact-open");
+  contactPanel.classList.remove("is-open");
+  contactPanel.setAttribute("aria-hidden", "true");
+
+  if (lastContactTrigger instanceof HTMLElement) {
+    lastContactTrigger.focus();
+  }
+};
+
+contactTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", (event) => {
+    event.preventDefault();
+    openContactPanel(trigger);
+  });
+});
+
+contactCloseButtons.forEach((button) => {
+  button.addEventListener("click", closeContactPanel);
+});
+
 navLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     const targetId = link.getAttribute("href");
@@ -52,6 +113,10 @@ navLinks.forEach((link) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && nav && nav.classList.contains("is-open")) {
     closeMenu();
+  }
+
+  if (event.key === "Escape") {
+    closeContactPanel();
   }
 });
 
@@ -166,17 +231,4 @@ if (tiltCard && window.matchMedia("(hover: hover)").matches) {
 
 if (year) {
   year.textContent = new Date().getFullYear();
-}
-
-// Para usar WhatsApp, coloque o numero com DDI e DDD abaixo.
-// Exemplo: const whatsappNumber = "5511999999999";
-const whatsappNumber = "";
-const whatsappMessage = "Olá! Gostaria de solicitar um orçamento para criação de site.";
-
-if (floatCta && whatsappNumber) {
-  const encodedMessage = encodeURIComponent(whatsappMessage);
-  floatCta.href = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-  floatCta.target = "_blank";
-  floatCta.rel = "noopener";
-  floatCta.setAttribute("aria-label", "Solicitar orçamento pelo WhatsApp");
 }

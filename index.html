@@ -95,14 +95,14 @@
       <a href="#beneficios">Benefícios</a>
       <a href="#portfolio">Portfólio</a>
       <a href="#contato">Contato</a>
-      <a class="btn btn--primary mobile-nav-cta" href="#contato">
-        Orçamento
+      <a class="btn btn--primary mobile-nav-cta" href="#contato" data-contact-trigger>
+        Quero orçamento
         <svg><use href="#icon-arrow"></use></svg>
       </a>
     </nav>
 
-    <a class="btn btn--primary header-cta" href="#contato">
-      Solicitar orçamento
+    <a class="btn btn--primary header-cta" href="#contato" data-contact-trigger>
+      Quero orçamento
       <svg><use href="#icon-arrow"></use></svg>
     </a>
   </header>
@@ -114,8 +114,8 @@
         <p class="hero__lead">Criamos sites profissionais que colocam sua marca em destaque, despertam confiança e abrem um caminho claro para o cliente pedir orçamento.</p>
 
         <div class="hero__actions">
-          <a class="btn btn--primary" href="#contato">
-            Quero um site para minha empresa
+          <a class="btn btn--primary" href="#contato" data-contact-trigger>
+            Quero orçamento
             <svg><use href="#icon-arrow"></use></svg>
           </a>
           <a class="btn btn--ghost" href="#servicos">Ver soluções</a>
@@ -353,8 +353,8 @@
       <div class="final-cta__copy reveal">
         <h2>Pronto para colocar sua empresa na frente dos clientes certos?</h2>
         <p>Envie uma mensagem e receba uma proposta objetiva para tirar seu site do papel.</p>
-        <a class="btn btn--primary" href="mailto:contato@agsdigital.com.br">
-          Solicitar orçamento agora
+        <a class="btn btn--primary" href="#contato" data-contact-trigger>
+          Quero orçamento
           <svg><use href="#icon-arrow"></use></svg>
         </a>
       </div>
@@ -368,7 +368,7 @@
           <img src="logo-vector.svg" alt="Logo AGS Digital" class="footer-logo" width="1123" height="645" loading="lazy" decoding="async">
         </a>
         <p>Sites profissionais, responsivos e pensados para destacar sua empresa com clareza, presença e confiança.</p>
-        <a class="footer-mail" href="mailto:contato@agsdigital.com.br">contato@agsdigital.com.br</a>
+        <a class="footer-mail" href="mailto:contato@agstecnologia.com">contato@agstecnologia.com</a>
       </div>
 
       <p class="footer-copy">
@@ -378,7 +378,35 @@
     </div>
   </footer>
 
-  <a class="float-cta" href="#contato" aria-label="Solicitar orçamento" data-float-cta>
+  <div class="contact-choice" data-contact-panel aria-hidden="true">
+    <div class="contact-choice__backdrop" data-contact-close></div>
+    <section class="contact-choice__dialog" role="dialog" aria-modal="true" aria-labelledby="contactChoiceTitle" tabindex="-1">
+      <button class="contact-choice__close" type="button" aria-label="Fechar opções" data-contact-close>
+        <span></span>
+        <span></span>
+      </button>
+      <h2 id="contactChoiceTitle">Escolha como quer falar com a AGS</h2>
+      <p>Receba atendimento direto pelo WhatsApp ou envie sua solicitação por e-mail.</p>
+      <div class="contact-choice__actions">
+        <a class="contact-option contact-option--whatsapp" href="#" target="_blank" rel="noopener" data-contact-whatsapp>
+          <svg><use href="#icon-whatsapp"></use></svg>
+          <span>
+            <strong>WhatsApp</strong>
+            <small>+55 31 99954-4453</small>
+          </span>
+        </a>
+        <a class="contact-option contact-option--email" href="#" data-contact-email>
+          <svg><use href="#icon-message"></use></svg>
+          <span>
+            <strong>E-mail</strong>
+            <small>contato@agstecnologia.com</small>
+          </span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <a class="float-cta" href="#contato" aria-label="Abrir opções de orçamento" data-float-cta data-contact-trigger>
     <svg><use href="#icon-whatsapp"></use></svg>
   </a>
 

@@ -1219,10 +1219,19 @@ button {
 
 .footer-copy {
   grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  justify-content: space-between;
   margin-top: 10px;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 0.9rem;
+}
+
+.footer-cnpj {
+  color: rgba(214, 227, 244, 0.8);
+  font-weight: 800;
 }
 
 .float-cta {

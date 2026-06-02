@@ -35,6 +35,8 @@ body {
   color: var(--ink);
   font-family: Inter, "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   background:
     radial-gradient(circle at 14% 12%, rgba(25, 199, 255, 0.2), transparent 26rem),
     radial-gradient(circle at 92% 8%, rgba(255, 79, 109, 0.14), transparent 24rem),
@@ -265,6 +267,7 @@ button {
   justify-content: center;
   gap: 10px;
   min-height: 52px;
+  max-width: 100%;
   padding: 0 22px;
   overflow: hidden;
   border: 1px solid transparent;
@@ -515,12 +518,6 @@ button {
   background-size: 220% 100%;
   background-position: -130% 0;
   filter: blur(0.6px);
-  -webkit-mask-image: url("logo-mask.svg");
-  mask-image: url("logo-mask.svg");
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
   mix-blend-mode: screen;
   animation: logoSweep 11.5s ease-in-out infinite;
   pointer-events: none;
@@ -1422,6 +1419,17 @@ button {
   }
 }
 
+@media (min-width: 781px) {
+  .logo-light-sweep {
+    -webkit-mask-image: url("logo-mask.svg");
+    mask-image: url("logo-mask.svg");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+}
+
 @media (max-width: 1120px) {
   .header-cta {
     display: none;
@@ -1457,31 +1465,73 @@ button {
 
 @media (max-width: 780px) {
   html {
-    scroll-padding-top: 82px;
+    scroll-padding-top: 72px;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 18% 4%, rgba(8, 107, 255, 0.18), transparent 18rem),
+      linear-gradient(180deg, #050913 0%, #08111f 52%, #0c1628 100%);
+  }
+
+  .background-fx {
+    position: absolute;
+    height: 100svh;
+  }
+
+  .fx-scan,
+  .fx-circuit,
+  .fx-beam,
+  .fx-sparks {
+    display: none;
+  }
+
+  .fx-grid {
+    opacity: 0.28;
+    background-size: 72px 72px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 82%);
+    animation: none;
   }
 
   .site-header {
-    min-height: 72px;
-    padding: 6px 16px;
+    min-height: 64px;
+    padding: 5px 14px;
+    background: rgba(5, 9, 19, 0.98);
+    backdrop-filter: none;
+    transition: none;
+  }
+
+  .site-header.is-scrolled {
+    min-height: 64px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
   }
 
   .brand {
-    width: 118px;
-    height: 52px;
+    width: 98px;
+    height: 46px;
+  }
+
+  .brand__logo {
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.24));
   }
 
   .menu-toggle {
     display: block;
+    width: 44px;
+    height: 44px;
+    box-shadow: none;
   }
 
   .main-nav {
     position: fixed;
-    top: 80px;
-    right: 16px;
-    left: 16px;
+    top: 72px;
+    right: 12px;
+    left: 12px;
     display: grid;
     gap: 6px;
+    max-height: calc(100svh - 88px);
     padding: 16px;
+    overflow-y: auto;
     border: 1px solid var(--line);
     border-radius: var(--radius);
     background: rgba(5, 9, 19, 0.98);
@@ -1521,27 +1571,70 @@ button {
   .section,
   .impact-strip,
   .footer-inner {
-    width: min(100% - 32px, var(--container));
+    width: min(100% - 28px, var(--container));
   }
 
   .hero {
-    padding-top: 104px;
+    gap: 24px;
+    padding: 88px 0 46px;
+  }
+
+  .hero::before {
+    inset: 76px -10px 0;
+    border-radius: 18px;
+    background:
+      linear-gradient(135deg, rgba(8, 107, 255, 0.14), rgba(255, 79, 109, 0.07)),
+      rgba(255, 255, 255, 0.028);
+    box-shadow: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.05rem, 10.2vw, 2.55rem);
+    line-height: 1.03;
+  }
+
+  .hero__lead {
+    margin-top: 18px;
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .hero__actions {
+    gap: 10px;
+    margin-top: 24px;
   }
 
   .hero__logo-stage {
-    min-height: 360px;
+    display: none;
   }
 
-  .logo-orbit {
-    width: min(100%, 360px);
+  .btn {
+    min-height: 48px;
+    padding: 0 16px;
+    line-height: 1.18;
+    text-align: center;
+    white-space: normal;
   }
 
-  .hero-logo-wrap {
-    width: 90%;
+  .btn svg {
+    flex: 0 0 auto;
   }
 
-  .brand-impact {
-    padding: 16px;
+  .hero__proof {
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .hero__proof span {
+    min-height: 38px;
+    padding: 8px 10px;
+    font-size: 0.84rem;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   .hero__actions .btn,
@@ -1551,6 +1644,25 @@ button {
 
   .hero__proof {
     display: grid;
+  }
+
+  .section {
+    padding: 66px 0;
+  }
+
+  .section__header {
+    margin-bottom: 24px;
+  }
+
+  .section__header h2,
+  .final-cta h2 {
+    font-size: clamp(1.8rem, 7.8vw, 2.2rem);
+    line-height: 1.12;
+  }
+
+  .section__header p:not(.eyebrow),
+  .final-cta p {
+    font-size: 0.98rem;
   }
 
   .conversion-flow {
@@ -1578,6 +1690,27 @@ button {
     min-height: auto;
   }
 
+  .service-card,
+  .benefit-feature,
+  .portfolio-card,
+  .process-step,
+  .contact-panel,
+  .final-cta__copy,
+  .brand-impact {
+    backdrop-filter: none;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  }
+
+  .service-card {
+    padding: 18px;
+  }
+
+  .icon-box {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 16px;
+  }
+
   .result-chip {
     position: static;
     margin-top: 12px;
@@ -1588,13 +1721,62 @@ button {
     padding: 18px;
   }
 
+  .portfolio-card {
+    padding: 16px;
+  }
+
+  .portfolio-screen {
+    min-height: 150px;
+  }
+
+  .process-step {
+    padding: 20px;
+  }
+
+  .process-step span {
+    margin-bottom: 24px;
+  }
+
+  .final-cta {
+    gap: 18px;
+  }
+
+  .final-cta__copy,
+  .contact-panel {
+    padding: 22px;
+  }
+
   .contact-panel img,
   .footer-logo {
-    width: 178px;
+    width: 160px;
   }
 
   .site-footer {
-    padding-bottom: 92px;
+    margin-top: 12px;
+    padding-bottom: 88px;
+  }
+
+  .float-cta {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px) scale(0.96);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+
+  .float-cta.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  body.menu-open .float-cta {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .footer-inner {
+    gap: 22px;
+    padding-top: 34px;
   }
 
   .footer-contact {
@@ -1613,12 +1795,12 @@ button {
 
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 10.8vw, 2.35rem);
   }
 
   .section__header h2,
   .final-cta h2 {
-    font-size: 2rem;
+    font-size: clamp(1.72rem, 8.6vw, 2rem);
   }
 
   .device-screen,
@@ -1627,10 +1809,30 @@ button {
   }
 
   .float-cta {
-    right: 16px;
-    bottom: 16px;
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
     width: 54px;
     height: 54px;
+  }
+}
+
+@media (hover: none) {
+  .btn:hover,
+  .btn:focus-visible,
+  .service-card:hover,
+  .portfolio-card:hover,
+  .benefit-feature:hover,
+  .audience-pill:hover,
+  .site-footer .footer-cta:hover,
+  .site-footer .footer-cta:focus-visible,
+  .float-cta:hover,
+  .float-cta:focus-visible {
+    transform: none;
+  }
+
+  .btn:hover::before,
+  .btn:focus-visible::before {
+    animation: none;
   }
 }
 

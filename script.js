@@ -7,6 +7,8 @@ const year = document.querySelector("[data-year]");
 const floatCta = document.querySelector("[data-float-cta]");
 const sparkLayer = document.querySelector("[data-sparks]");
 const tiltCard = document.querySelector("[data-tilt]");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const mobileViewport = window.matchMedia("(max-width: 780px)");
 
 const closeMenu = () => {
   if (!nav || !menuToggle) return;
@@ -40,7 +42,10 @@ navLinks.forEach((link) => {
 
     event.preventDefault();
     closeMenu();
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    target.scrollIntoView({
+      behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+      block: "start",
+    });
   });
 });
 
@@ -55,64 +60,79 @@ const updateHeader = () => {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
 };
 
+const updateFloatCta = () => {
+  if (!floatCta || !mobileViewport.matches) return;
+  floatCta.classList.toggle("is-visible", window.scrollY > 420);
+};
+
 updateHeader();
+updateFloatCta();
 window.addEventListener("scroll", updateHeader, { passive: true });
+window.addEventListener("scroll", updateFloatCta, { passive: true });
 
 // Elementos revelam ao entrar na tela.
 const revealElements = document.querySelectorAll(".reveal");
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
+if (mobileViewport.matches || prefersReducedMotion.matches) {
+  revealElements.forEach((element) => element.classList.add("is-visible"));
+} else if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
 
-      entry.target.classList.add("is-visible");
-      revealObserver.unobserve(entry.target);
-    });
-  },
-  {
-    threshold: 0.16,
-    rootMargin: "0px 0px -70px 0px",
-  }
-);
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.16,
+      rootMargin: "0px 0px -70px 0px",
+    }
+  );
 
-revealElements.forEach((element) => revealObserver.observe(element));
+  revealElements.forEach((element) => revealObserver.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("is-visible"));
+}
 
 // Contadores curtos para a faixa de impacto.
 const counters = document.querySelectorAll("[data-count]");
 
-const counterObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
+if ("IntersectionObserver" in window && counters.length) {
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
 
-      const element = entry.target;
-      const target = Number(element.dataset.count);
-      const duration = 900;
-      const start = performance.now();
+        const element = entry.target;
+        const target = Number(element.dataset.count);
+        const duration = 900;
+        const start = performance.now();
 
-      const tick = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        element.textContent = Math.round(target * eased);
+        const tick = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          element.textContent = Math.round(target * eased);
 
-        if (progress < 1) {
-          requestAnimationFrame(tick);
-        }
-      };
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          }
+        };
 
-      requestAnimationFrame(tick);
-      counterObserver.unobserve(element);
-    });
-  },
-  { threshold: 0.65 }
-);
+        requestAnimationFrame(tick);
+        counterObserver.unobserve(element);
+      });
+    },
+    { threshold: 0.65 }
+  );
 
-counters.forEach((counter) => counterObserver.observe(counter));
+  counters.forEach((counter) => counterObserver.observe(counter));
+}
 
 // Linhas de energia no fundo, geradas com posicoes variadas.
-if (sparkLayer) {
-  const totalSparks = 42;
+if (sparkLayer && !mobileViewport.matches && !prefersReducedMotion.matches) {
+  const totalSparks = 24;
 
   for (let index = 0; index < totalSparks; index += 1) {
     const spark = document.createElement("span");

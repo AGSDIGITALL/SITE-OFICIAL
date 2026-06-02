@@ -198,8 +198,8 @@ button {
   background-size: 42% 100%, 100% 100%;
   background-repeat: no-repeat;
   box-shadow: 0 0 16px rgba(25, 199, 255, 0.24);
-  animation: headerSignal 7.8s ease-in-out infinite;
-  animation-delay: -2.2s;
+  animation: headerSignal 8.8s linear infinite;
+  animation-delay: -1.8s;
 }
 
 .brand,
@@ -1583,20 +1583,23 @@ button {
 }
 
 @keyframes headerSignal {
-  0%,
-  30% {
-    background-position: -48% 0, 0 0;
-    opacity: 0.5;
+  0% {
+    background-position: -72% 0, 0 0;
+    opacity: 0;
   }
 
-  48% {
+  8% {
     opacity: 1;
   }
 
-  72%,
+  88% {
+    background-position: 172% 0, 0 0;
+    opacity: 1;
+  }
+
   100% {
-    background-position: 148% 0, 0 0;
-    opacity: 0.56;
+    background-position: 172% 0, 0 0;
+    opacity: 0;
   }
 }
 

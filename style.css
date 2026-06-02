@@ -1611,8 +1611,8 @@ button {
 
 @media (min-width: 781px) {
   .logo-light-sweep {
-    -webkit-mask-image: url("logo-mask.svg");
-    mask-image: url("logo-mask.svg");
+    -webkit-mask-image: url("logo-mask.svg?v=20260602-8");
+    mask-image: url("logo-mask.svg?v=20260602-8");
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;

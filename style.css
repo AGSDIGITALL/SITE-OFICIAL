@@ -1006,13 +1006,16 @@ button {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  gap: 22px;
 }
 
 .portfolio-card {
-  min-height: 350px;
-  padding: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.14fr) minmax(260px, 0.86fr);
+  gap: clamp(18px, 3.2vw, 34px);
+  align-items: center;
+  min-height: 360px;
+  padding: 20px;
   overflow: hidden;
   transition: transform 0.22s ease, border-color 0.22s ease;
 }
@@ -1022,67 +1025,69 @@ button {
   transform: translateY(-8px);
 }
 
-.portfolio-screen {
-  position: relative;
-  display: grid;
-  align-content: end;
-  gap: 10px;
-  min-height: 190px;
-  margin-bottom: 20px;
-  padding: 18px;
-  overflow: hidden;
-  border-radius: var(--radius);
-  background: #fff;
+.portfolio-card--clinic {
+  grid-template-columns: minmax(260px, 0.86fr) minmax(0, 1.14fr);
 }
 
-.portfolio-screen::before {
-  position: absolute;
-  inset: 18px 18px auto;
-  height: 48px;
-  content: "";
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  border-radius: var(--radius);
+.portfolio-card--clinic .portfolio-visual {
+  order: 2;
 }
 
-.portfolio-card--restaurant .portfolio-screen {
-  background: linear-gradient(135deg, #12284c, #ff4f6d 58%, #f6b73c);
+.portfolio-card--clinic .portfolio-copy {
+  order: 1;
 }
 
-.portfolio-card--fashion .portfolio-screen {
-  background: linear-gradient(135deg, #071225, #086bff 50%, #17b978);
-}
-
-.portfolio-card--clinic .portfolio-screen {
-  background: linear-gradient(135deg, #0c3d5f, #19c7ff 54%, #ffffff);
-}
-
-.portfolio-card--service .portfolio-screen {
-  background: linear-gradient(135deg, #351335, #ff4f6d 52%, #19c7ff);
-}
-
-.screen-line,
-.screen-button {
-  position: relative;
-  z-index: 1;
+.portfolio-visual {
   display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 64 / 42;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.2);
 }
 
-.screen-line {
-  width: 58%;
-  height: 10px;
+.portfolio-copy {
+  display: grid;
+  gap: 12px;
 }
 
-.screen-line--wide {
-  width: 88%;
-  height: 28px;
+.portfolio-copy span {
+  width: fit-content;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: var(--radius);
+  color: #dff3ff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.screen-button {
-  width: 104px;
-  height: 30px;
-  background: rgba(7, 18, 37, 0.5);
+.portfolio-card--fashion .portfolio-copy span {
+  color: #ffdce5;
+}
+
+.portfolio-card--clinic .portfolio-copy span {
+  color: #bdefff;
+}
+
+.portfolio-card--florist .portfolio-copy span {
+  color: #dcffd8;
+}
+
+.portfolio-copy h3 {
+  max-width: 420px;
+  margin: 0;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  line-height: 1.05;
+}
+
+.portfolio-copy p {
+  max-width: 450px;
+  font-size: 1rem;
 }
 
 .process-line {
@@ -1637,8 +1642,7 @@ button {
     width: min(100%, 500px);
   }
 
-  .services-grid,
-  .portfolio-grid {
+  .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1953,11 +1957,21 @@ button {
   }
 
   .portfolio-card {
+    grid-template-columns: 1fr;
     padding: 16px;
   }
 
-  .portfolio-screen {
-    min-height: 150px;
+  .portfolio-card--clinic {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-card--clinic .portfolio-visual,
+  .portfolio-card--clinic .portfolio-copy {
+    order: initial;
+  }
+
+  .portfolio-visual {
+    aspect-ratio: 64 / 42;
   }
 
   .process-step {

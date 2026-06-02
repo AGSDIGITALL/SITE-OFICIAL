@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AGS Digital cria sites profissionais, modernos e responsivos para empresas que querem atrair mais clientes pela internet.">
+  <title>AGS Digital | Sites que chamam clientes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Efeitos visuais de fundo controlados por CSS e JavaScript. -->
+  <div class="background-fx" aria-hidden="true">
+    <span class="fx-grid"></span>
+    <span class="fx-scan"></span>
+    <span class="fx-beam fx-beam--one"></span>
+    <span class="fx-beam fx-beam--two"></span>
+    <span class="fx-circuit"></span>
+    <span class="fx-sparks" data-sparks></span>
+  </div>
+
+  <!-- Biblioteca de icones SVG reutilizados no layout. -->
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h14M13 6l6 6-6 6"></path>
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="m5 12 4 4L19 6"></path>
+    </symbol>
+    <symbol id="icon-zap" viewBox="0 0 24 24">
+      <path d="m13 2-9 13h7l-1 7 10-14h-7l1-6Z"></path>
+    </symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+      <path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"></path>
+      <path d="M11 18h2"></path>
+    </symbol>
+    <symbol id="icon-target" viewBox="0 0 24 24">
+      <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"></path>
+      <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"></path>
+      <path d="M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
+    </symbol>
+    <symbol id="icon-store" viewBox="0 0 24 24">
+      <path d="M4 10h16l-1-5H5l-1 5Z"></path>
+      <path d="M5 10v10h14V10M9 20v-6h6v6M4 10a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"></path>
+    </symbol>
+    <symbol id="icon-rocket" viewBox="0 0 24 24">
+      <path d="M4.5 16.5c-1.2 1-1.7 2.9-1.1 4.1 1.2.6 3.1.1 4.1-1.1"></path>
+      <path d="M9 15 6 12a13.3 13.3 0 0 1 10.6-8.4l3.8-.4-.4 3.8A13.3 13.3 0 0 1 12 18l-3-3Z"></path>
+      <path d="M14 8h.01M7 13l-3 1 2-4M11 17l-1 3 4-2"></path>
+    </symbol>
+    <symbol id="icon-cart" viewBox="0 0 24 24">
+      <path d="M3 4h2l2.2 10.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20 8H6"></path>
+      <path d="M9 20h.01M17 20h.01"></path>
+    </symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+      <path d="M4 7h16M4 12h16M4 17h16"></path>
+    </symbol>
+    <symbol id="icon-utensils" viewBox="0 0 24 24">
+      <path d="M4 3v8a3 3 0 0 0 6 0V3M7 3v18M15 3v18"></path>
+      <path d="M15 3c3 1.5 5 4.1 5 7.5V12h-5"></path>
+    </symbol>
+    <symbol id="icon-tooth" viewBox="0 0 24 24">
+      <path d="M8.7 3.2c1.2 0 2 .8 3.3.8s2.1-.8 3.3-.8c2.4 0 4 2 4 4.5 0 2.2-1 3.9-1.7 5.5-.9 2-1.1 5.6-2.8 5.6-1.5 0-1.2-4.4-2.8-4.4s-1.3 4.4-2.8 4.4c-1.7 0-1.9-3.6-2.8-5.6-.7-1.6-1.7-3.3-1.7-5.5 0-2.5 1.6-4.5 4-4.5Z"></path>
+    </symbol>
+    <symbol id="icon-shirt" viewBox="0 0 24 24">
+      <path d="M9 4 6 5 3 9l4 3v8h10v-8l4-3-3-4-3-1a3 3 0 0 1-6 0Z"></path>
+    </symbol>
+    <symbol id="icon-layout" viewBox="0 0 24 24">
+      <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Z"></path>
+      <path d="M4 9h16M9 21V9"></path>
+    </symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24">
+      <path d="M21 12a8 8 0 0 1-8 8H6l-3 3v-7a8 8 0 1 1 18-4Z"></path>
+    </symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+      <path d="M5.2 19.2 6 16.1a7.7 7.7 0 1 1 2.9 2.7l-3.7.4Z"></path>
+      <path d="M9.7 8.8c.2-.4.3-.4.6-.4h.4c.2 0 .4.1.5.4l.5 1.2c.1.3 0 .5-.1.7l-.3.4c-.1.1-.2.3-.1.5.3.6.7 1.1 1.2 1.5.6.5 1.1.8 1.8 1 .2.1.3 0 .5-.1l.5-.6c.2-.2.4-.2.7-.1l1.2.6c.3.2.4.4.3.7-.1.5-.4 1-.8 1.2-.5.3-1.4.3-2.5-.2-1.6-.7-2.8-1.5-3.9-2.7-1-1.1-1.8-2.5-2-3.4-.2-.8.1-1.4.5-1.7.2-.2.6-.5 1-.6Z"></path>
+    </symbol>
+  </svg>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#inicio" aria-label="AGS Digital - Início">
+      <img src="logo-vector.svg" alt="Logo AGS Digital" class="brand__logo">
+    </a>
+
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav" data-nav aria-label="Menu principal">
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#contato">Contato</a>
+      <a class="btn btn--primary mobile-nav-cta" href="#contato">
+        Orçamento
+        <svg><use href="#icon-arrow"></use></svg>
+      </a>
+    </nav>
+
+    <a class="btn btn--primary header-cta" href="#contato">
+      Solicitar orçamento
+      <svg><use href="#icon-arrow"></use></svg>
+    </a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero__copy reveal">
+        <h1>Sua empresa não precisa de sorte. Precisa ser vista.</h1>
+        <p class="hero__lead">Criamos sites profissionais que colocam sua marca em destaque, despertam confiança e abrem um caminho claro para o cliente pedir orçamento.</p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contato">
+            Quero um site para minha empresa
+            <svg><use href="#icon-arrow"></use></svg>
+          </a>
+          <a class="btn btn--ghost" href="#servicos">Ver soluções</a>
+        </div>
+
+        <div class="hero__proof" aria-label="Destaques do serviço">
+          <span><svg><use href="#icon-check"></use></svg> Design sob medida</span>
+          <span><svg><use href="#icon-check"></use></svg> Carrega rápido</span>
+          <span><svg><use href="#icon-check"></use></svg> Cliente chama no contato</span>
+        </div>
+      </div>
+
+      <div class="hero__showcase hero__logo-stage reveal" aria-label="Marca AGS Digital em destaque">
+        <div class="logo-orbit" data-tilt>
+          <span class="orbit-ring orbit-ring--one"></span>
+          <span class="orbit-ring orbit-ring--two"></span>
+          <span class="logo-glow"></span>
+          <span class="visual-dot visual-dot--one"></span>
+          <span class="visual-dot visual-dot--two"></span>
+          <span class="visual-dot visual-dot--three"></span>
+
+          <div class="hero-logo-wrap">
+            <img src="logo-vector.svg" alt="Logo AGS Digital" class="hero-logo">
+            <span class="logo-light-sweep"></span>
+          </div>
+        </div>
+
+        <div class="brand-impact">
+          <strong>Sua marca na tela certa, do jeito certo.</strong>
+          <span>presença, confiança e impacto antes mesmo do primeiro contato</span>
+        </div>
+
+        <template>
+        <div class="device-frame">
+          <div class="device-top">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="device-screen">
+            <div class="preview-nav">
+              <img src="logo-vector.svg" alt="" class="preview-logo">
+              <span>site online</span>
+            </div>
+            <div class="preview-hero">
+              <span class="preview-kicker"></span>
+              <span class="preview-title"></span>
+              <span class="preview-text"></span>
+              <span class="preview-button"></span>
+            </div>
+            <div class="conversion-flow" aria-label="Fluxo de conversão">
+              <span>visitante</span>
+              <strong></strong>
+              <span>interesse</span>
+              <strong></strong>
+              <span>contato</span>
+            </div>
+            <div class="preview-panels">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-chip result-chip--one">
+          <strong>Visual premium</strong>
+          <span>primeira impressão forte</span>
+        </div>
+        <div class="result-chip result-chip--two">
+          <strong>Mais pedidos</strong>
+          <span>caminho curto ao orçamento</span>
+        </div>
+        </template>
+      </div>
+    </section>
+
+    <section class="section" id="servicos">
+      <div class="section__header reveal">
+        <h2>Seu negócio com um site feito para impressionar nos primeiros segundos.</h2>
+        <p>Escolhemos estrutura, visual e chamadas de acordo com o que seu cliente precisa ver para confiar e pedir orçamento.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card reveal">
+          <span class="icon-box"><svg><use href="#icon-layout"></use></svg></span>
+          <h3>Site institucional</h3>
+          <p>Apresente sua empresa com autoridade, diferenciais, serviços e contato em uma página profissional.</p>
+        </article>
+        <article class="service-card reveal">
+          <span class="icon-box"><svg><use href="#icon-rocket"></use></svg></span>
+          <h3>Landing page</h3>
+          <p>Página direta para campanhas, lançamentos, anúncios e captação rápida de interessados.</p>
+        </article>
+        <article class="service-card reveal">
+          <span class="icon-box"><svg><use href="#icon-cart"></use></svg></span>
+          <h3>Loja virtual</h3>
+          <p>Vitrine online para organizar produtos, destacar ofertas e gerar pedidos com mais confiança.</p>
+        </article>
+        <article class="service-card reveal">
+          <span class="icon-box"><svg><use href="#icon-menu"></use></svg></span>
+          <h3>Cardápio digital</h3>
+          <p>Cardápio bonito, rápido e fácil de acessar por link ou QR Code, ideal para pedidos e delivery.</p>
+        </article>
+        <article class="service-card reveal">
+          <span class="icon-box"><svg><use href="#icon-utensils"></use></svg></span>
+          <h3>Restaurantes</h3>
+          <p>Mostre pratos, ambiente, localização, horários e chamadas para reserva ou WhatsApp.</p>
+        </article>
+        <article class="service-card reveal">
+          <span class="icon-box"><svg><use href="#icon-tooth"></use></svg></span>
+          <h3>Dentistas</h3>
+          <p>Página profissional para serviços, tratamentos, estrutura da clínica e agendamento.</p>
+        </article>
+        <article class="service-card reveal">
+          <span class="icon-box"><svg><use href="#icon-shirt"></use></svg></span>
+          <h3>Lojas de roupa</h3>
+          <p>Valorize coleções, lançamentos e peças com uma vitrine digital elegante e responsiva.</p>
+        </article>
+        <article class="service-card reveal">
+          <span class="icon-box"><svg><use href="#icon-store"></use></svg></span>
+          <h3>Pequenos negócios</h3>
+          <p>Coloque sua empresa no digital com clareza, presença local e caminho rápido para contato.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section benefits-section" id="beneficios">
+      <div class="section__header reveal">
+        <h2>Não é só um site bonito. É uma experiência feita para converter.</h2>
+      </div>
+
+      <div class="benefit-stage">
+        <article class="benefit-feature reveal">
+          <span><svg><use href="#icon-phone"></use></svg></span>
+          <div>
+            <h3>Perfeito no celular</h3>
+            <p>Seu cliente vê tudo com facilidade, sem zoom, sem bagunça e sem perder tempo.</p>
+          </div>
+        </article>
+        <article class="benefit-feature reveal">
+          <span><svg><use href="#icon-zap"></use></svg></span>
+          <div>
+            <h3>Carregamento rápido</h3>
+            <p>Código leve e visual otimizado para causar boa impressão sem travar.</p>
+          </div>
+        </article>
+        <article class="benefit-feature reveal">
+          <span><svg><use href="#icon-target"></use></svg></span>
+          <div>
+            <h3>Mensagem clara</h3>
+            <p>Textos, seções e chamadas pensadas para mostrar valor e levar ao contato.</p>
+          </div>
+        </article>
+        <article class="benefit-feature reveal">
+          <span><svg><use href="#icon-message"></use></svg></span>
+          <div>
+            <h3>WhatsApp ou e-mail em destaque</h3>
+            <p>Quem gostou do que viu chega ao orçamento com apenas um clique.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section portfolio-section" id="portfolio">
+      <div class="section__header reveal">
+        <h2>Exemplos de projetos que capturam atenção e levam ao próximo passo.</h2>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-card portfolio-card--restaurant reveal">
+          <div class="portfolio-screen">
+            <span class="screen-line screen-line--wide"></span>
+            <span class="screen-line"></span>
+            <span class="screen-button"></span>
+          </div>
+          <h3>Site para restaurante</h3>
+          <p>Cardápio, reservas, fotos, endereço e botão direto para pedido.</p>
+        </article>
+        <article class="portfolio-card portfolio-card--fashion reveal">
+          <div class="portfolio-screen">
+            <span class="screen-line screen-line--wide"></span>
+            <span class="screen-line"></span>
+            <span class="screen-button"></span>
+          </div>
+          <h3>Loja de roupas online</h3>
+          <p>Vitrine elegante para coleções, lançamentos e contato rápido.</p>
+        </article>
+        <article class="portfolio-card portfolio-card--clinic reveal">
+          <div class="portfolio-screen">
+            <span class="screen-line screen-line--wide"></span>
+            <span class="screen-line"></span>
+            <span class="screen-button"></span>
+          </div>
+          <h3>Clínica odontológica</h3>
+          <p>Tratamentos, equipe, estrutura e agendamento em destaque.</p>
+        </article>
+        <article class="portfolio-card portfolio-card--service reveal">
+          <div class="portfolio-screen">
+            <span class="screen-line screen-line--wide"></span>
+            <span class="screen-line"></span>
+            <span class="screen-button"></span>
+          </div>
+          <h3>Prestador de serviço</h3>
+          <p>Landing page persuasiva para gerar orçamento e confiança.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section process-section">
+      <div class="section__header reveal">
+        <h2>Um processo simples para sua empresa sair do improviso e entrar no digital.</h2>
+      </div>
+
+      <div class="process-line">
+        <article class="process-step reveal">
+          <span>01</span>
+          <h3>Entendemos seu negócio</h3>
+          <p>Mapeamos público, serviços, diferenciais e objetivo principal do site.</p>
+        </article>
+        <article class="process-step reveal">
+          <span>02</span>
+          <h3>Criamos a presença</h3>
+          <p>Montamos layout, textos e seções com foco em impacto visual e conversão.</p>
+        </article>
+        <article class="process-step reveal">
+          <span>03</span>
+          <h3>Publicamos e ajustamos</h3>
+          <p>Seu site fica pronto para divulgar, compartilhar e receber contatos.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section final-cta" id="contato">
+      <div class="final-cta__copy reveal">
+        <h2>Pronto para colocar sua empresa na frente dos clientes certos?</h2>
+        <p>Peça um orçamento e receba uma proposta para um site profissional, responsivo e feito para destacar seu negócio.</p>
+        <a class="btn btn--primary" href="mailto:contato@agsdigital.com.br">
+          Solicitar orçamento agora
+          <svg><use href="#icon-arrow"></use></svg>
+        </a>
+      </div>
+
+      <aside class="contact-panel reveal">
+        <img src="logo-vector.svg" alt="Logo AGS Digital">
+        <h3>AGS Digital</h3>
+        <p>Sites profissionais para empresas locais, lojas, restaurantes, clínicas e prestadores de serviço.</p>
+        <a href="mailto:contato@agsdigital.com.br">contato@agsdigital.com.br</a>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand-block">
+        <a href="#inicio" aria-label="AGS Digital - Início" class="footer-brand">
+          <img src="logo-vector.svg" alt="Logo AGS Digital" class="footer-logo">
+        </a>
+        <p>Sites profissionais, responsivos e pensados para destacar sua empresa com clareza, presença e confiança.</p>
+        <a class="footer-mail" href="mailto:contato@agsdigital.com.br">contato@agsdigital.com.br</a>
+      </div>
+
+      <div class="footer-contact">
+        <strong>Vamos construir sua presença digital?</strong>
+        <span>Receba uma proposta objetiva para tirar seu site do papel.</span>
+        <a class="footer-cta" href="mailto:contato@agsdigital.com.br">
+          Solicitar orçamento
+          <svg><use href="#icon-arrow"></use></svg>
+        </a>
+      </div>
+
+      <p class="footer-copy">&copy; <span data-year></span> AGS Digital. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a class="float-cta" href="#contato" aria-label="Solicitar orçamento" data-float-cta>
+    <svg><use href="#icon-whatsapp"></use></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
